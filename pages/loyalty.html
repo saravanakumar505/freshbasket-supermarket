@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshBasket Rewards — Digital Loyalty Club</title>
+  <meta name="description"
+    content="Earn points on everyday grocery shopping, unlock Gold &amp; Platinum member rewards, redeem vouchers and enjoy exclusive cashback.">
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/images/favicon-192.png">
+
+  <!-- Tailwind CSS & Lucide CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f0fdf4', 100: '#dcfce7', 500: '#22c55e', 600: '#16a34a', 700: '#15803d' }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Design Tokens & Dark Mode / RTL CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col">
+
+  <header class="header-sticky bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 h-[68px] flex items-center justify-between gap-4">
+      <!-- Left: Logo -->
+      <a href="../index.html" class="flex items-center gap-2.5 group shrink-0"
+        aria-label="FreshBasket Supermarket Homepage">
+        <div
+          class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform">
+          <i data-lucide="shopping-basket" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white font-heading">Fresh<span
+              class="text-emerald-600">Basket</span></span>
+          <span class="block text-[10px] text-slate-400 tracking-widest font-semibold uppercase">Daily Grocery
+            Supermarket</span>
+        </div>
+      </a>
+      <!-- Center: Navigation Links -->
+      <nav
+        class="hidden lg:flex items-center gap-3 lg:gap-3.5 xl:gap-5 2xl:gap-6 text-xs lg:text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-300"
+        id="desktop-nav">
+        <div class="relative group" id="home-dropdown-wrapper">
+          <button
+            class="flex items-center gap-1 py-2 text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 focus:outline-none transition-colors"
+            aria-haspopup="true" aria-expanded="false" id="home-dropdown-btn">
+            <span>Home</span>
+            <i data-lucide="chevron-down"
+              class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-slate-400 group-hover:text-emerald-600"></i>
+          </button>
+          <div
+            class="absolute top-full left-0 mt-1 w-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden py-1"
+            role="menu">
+            <a href="../index.html"
+              class="flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 hover:text-emerald-600 transition-colors"
+              role="menuitem">
+              <i data-lucide="house" class="w-4 h-4 text-emerald-600"></i> Home 1
+            </a>
+            <a href="home-2.html"
+              class="flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 hover:text-emerald-600 transition-colors"
+              role="menuitem">
+              <i data-lucide="house" class="w-4 h-4 text-slate-400"></i> Home 2
+            </a>
+          </div>
+        </div>
+        <a href="shop.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Shop</a>
+        <a href="categories.html"
+          class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Categories</a>
+        <a href="offers.html"
+          class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Offers</a>
+        <a href="delivery-coverage.html"
+          class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Delivery</a>
+        <a href="loyalty.html" class="py-2 text-emerald-600 dark:text-emerald-400 font-bold">Loyalty</a>
+        <a href="about.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">About</a>
+        <a href="contact.html"
+          class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Contact</a>
+        <a href="dashboard/index.html"
+          class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Dashboard</a>
+      </nav>
+      <!-- Right: Action Controls -->
+      <div class="hidden lg:flex items-center gap-2 xl:gap-3">
+        <button id="themeToggle" type="button"
+          class="theme-toggle-btn flex items-center justify-center w-9 h-9 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors"
+          aria-label="Switch to dark mode" title="Switch to dark mode">
+          <i data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+        <button id="rtlToggle"
+          class="rtl-toggle-btn flex items-center gap-1.5 h-9 px-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          type="button" aria-label="Toggle RTL layout" title="Toggle RTL layout">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m5 8 4 4-4 4" />
+            <path d="M9 12H3" />
+            <path d="M19 8l-4 4 4 4" />
+            <path d="M15 12h6" />
+          </svg>
+          <span>RTL</span>
+        </button>
+        <a href="cart.html"
+          class="relative flex items-center justify-center w-9 h-9 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          aria-label="Shopping cart" title="Shopping cart">
+          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          <span
+            class="cart-badge-count absolute -top-0.5 -right-0.5 min-w-[16px] h-4 text-[10px] font-bold bg-emerald-600 text-white rounded-full flex items-center justify-center px-0.5 leading-none"
+            style="display:none"></span>
+        </a>
+        <span class="h-4 w-px bg-slate-200 dark:bg-slate-700" aria-hidden="true"></span>
+        <a href="login.html"
+          class="px-3.5 py-1.5 border border-emerald-600 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-600 hover:text-white dark:hover:text-white rounded-full font-bold text-xs transition-colors flex items-center justify-center"
+          aria-label="Login">Login</a>
+        <a href="register.html"
+          class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold text-xs shadow-sm transition-colors flex items-center justify-center"
+          aria-label="Sign Up">Sign Up</a>
+      </div>
+      <!-- Mobile: Cart + Hamburger -->
+      <div class="lg:hidden flex items-center gap-1">
+        <a href="cart.html"
+          class="relative flex items-center justify-center w-9 h-9 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          aria-label="Shopping cart">
+          <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+          <span
+            class="cart-badge-count absolute -top-0.5 -right-0.5 min-w-[16px] h-4 text-[10px] font-bold bg-emerald-600 text-white rounded-full flex items-center justify-center px-0.5 leading-none"
+            style="display:none"></span>
+        </a>
+        <button id="mobile-menu-toggle"
+          class="flex items-center justify-center w-9 h-9 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none"
+          aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HEADER -->
+
+  <main class="flex-1 w-full space-y-16">
+
+    <!-- 1. HERO -->
+    <section class="bg-slate-900 text-white py-12 md:py-16 border-b border-slate-800 relative overflow-hidden"
+      style="background-image: linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(180, 83, 9, 0.85), rgba(15, 23, 42, 0.92)), url('../assets/images/loyalty-rewards-banner.webp'); background-size: cover; background-position: center;">
+      <div class="max-w-7xl mx-auto px-4 relative z-10">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <span
+              class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/50 text-amber-400 text-xs font-bold uppercase tracking-wider">
+              <i data-lucide="crown" class="w-3.5 h-3.5"></i> FreshBasket Member Club
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold font-heading text-white">Every Grocery Trip Can <span
+                class="text-amber-400">Earn You Rewards</span></h1>
+            <p class="text-slate-300 text-sm max-w-xl leading-relaxed">Join FreshBasket Rewards to earn points, unlock
+              exclusive offers and save more on the products you already buy.</p>
+            <div class="pt-2">
+              <a href="register.html"
+                class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs rounded-xl shadow-lg inline-flex items-center gap-2">
+                <i data-lucide="crown" class="w-4 h-4 text-amber-300"></i> Join FreshBasket Rewards
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div
+              class="bg-gradient-to-tr from-emerald-950 via-emerald-900 to-slate-900 border border-emerald-700/60 rounded-2xl p-6 text-white shadow-2xl space-y-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <span class="text-[10px] text-emerald-300 font-extrabold tracking-widest uppercase block">FRESHBASKET
+                    REWARDS</span>
+                  <span class="text-lg font-extrabold text-amber-400 tracking-wider font-mono">GOLD MEMBER</span>
+                </div>
+                <i data-lucide="crown" class="w-8 h-8 text-amber-400"></i>
+              </div>
+              <div>
+                <span class="text-[10px] text-emerald-300 uppercase tracking-widest block">Cardholder</span>
+                <h3 class="font-extrabold text-lg font-mono">SARAN</h3>
+              </div>
+              <div class="flex justify-between border-t border-emerald-800/60 pt-3 text-xs">
+                <div>
+                  <span class="text-[10px] text-emerald-300 block">Member ID</span>
+                  <span class="font-mono">#FB-88902</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-amber-400 font-bold block uppercase">Points Balance</span>
+                  <span class="text-xl font-extrabold text-amber-400 font-mono">2,450 Pts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. LOYALTY BENEFITS -->
+    <section class="max-w-7xl mx-auto px-4">
+      <div class="text-center max-w-xl mx-auto mb-10 space-y-1">
+        <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Member Perks</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white font-heading">Exclusive Member Benefits</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="award" class="w-7 h-7 text-amber-500"></i>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Earn Points</h3>
+          <p class="text-xs text-slate-500">Earn 1 point for every ₹10 spent on everyday grocery shopping.</p>
+        </div>
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="tag" class="w-7 h-7 text-emerald-600"></i>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Member Discounts</h3>
+          <p class="text-xs text-slate-500">Access lower member prices on top organic produce brands.</p>
+        </div>
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="gift" class="w-7 h-7 text-rose-500"></i>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Birthday Rewards</h3>
+          <p class="text-xs text-slate-500">Receive 500 bonus points and a gift basket on your birthday week.</p>
+        </div>
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="ticket" class="w-7 h-7 text-blue-600"></i>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Exclusive Coupons</h3>
+          <p class="text-xs text-slate-500">Unlock personal wallet discount codes every single month.</p>
+        </div>
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="zap" class="w-7 h-7 text-purple-600"></i>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Early Access</h3>
+          <p class="text-xs text-slate-500">Shop festival grocery sales 24 hours before general public.</p>
+        </div>
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="sparkles" class="w-7 h-7 text-teal-600"></i>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Personalized Offers</h3>
+          <p class="text-xs text-slate-500">Get customized price drops on items you frequently buy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HOW IT WORKS (4 STEPS) -->
+    <section class="max-w-7xl mx-auto px-4">
+      <div
+        class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-12 space-y-8 shadow-sm text-center">
+        <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Easy System</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white font-heading">How Loyalty Rewards Work</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 text-xs font-semibold">
+          <div class="space-y-2">
+            <span
+              class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold inline-flex items-center justify-center">1</span>
+            <h3 class="font-bold text-slate-900 dark:text-white">Join Free</h3>
+            <p class="text-[11px] text-slate-500">Sign up and instantly claim 500 Welcome points.</p>
+          </div>
+          <div class="space-y-2">
+            <span
+              class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold inline-flex items-center justify-center">2</span>
+            <h3 class="font-bold text-slate-900 dark:text-white">Shop Groceries</h3>
+            <p class="text-[11px] text-slate-500">Buy produce online or present digital card in store.</p>
+          </div>
+          <div class="space-y-2">
+            <span
+              class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold inline-flex items-center justify-center">3</span>
+            <h3 class="font-bold text-slate-900 dark:text-white">Earn Points</h3>
+            <p class="text-[11px] text-slate-500">Points credit automatically to your member wallet.</p>
+          </div>
+          <div class="space-y-2">
+            <span
+              class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold inline-flex items-center justify-center">4</span>
+            <h3 class="font-bold text-slate-900 dark:text-white">Redeem Vouchers</h3>
+            <p class="text-[11px] text-slate-500">Convert points to instant checkout discount coupons.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. REWARD TIERS -->
+    <section class="max-w-7xl mx-auto px-4">
+      <div class="text-center max-w-xl mx-auto mb-10 space-y-1">
+        <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Tier Levels</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white font-heading">Unlock Higher Tiers</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <span class="text-xs font-bold text-slate-500 uppercase">TIER 1</span>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Member</h3>
+          <p class="text-xs text-slate-500">0 – 1,000 Points • 1 Pt per ₹10</p>
+          <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-emerald-600 h-full w-full"></div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <span class="text-xs font-bold text-slate-500 uppercase">TIER 2</span>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Silver</h3>
+          <p class="text-xs text-slate-500">1,001 – 2,500 Points • 1.25 Pts per ₹10</p>
+          <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-slate-400 h-full w-4/5"></div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm border-amber-500">
+          <span class="text-xs font-bold text-amber-500 uppercase">TIER 3 (YOUR CURRENT)</span>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Gold Member</h3>
+          <p class="text-xs text-slate-500">2,501 – 5,000 Points • 1.5 Pts per ₹10</p>
+          <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-amber-400 h-full w-1/2"></div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <span class="text-xs font-bold text-purple-600 uppercase">TIER 4</span>
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Premium VIP</h3>
+          <p class="text-xs text-slate-500">5,000+ Points • 2 Pts per ₹10 + Free Shipping</p>
+          <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-purple-600 h-full w-1/4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. REWARD CATALOG -->
+    <section class="max-w-7xl mx-auto px-4">
+      <div class="text-center max-w-xl mx-auto mb-10 space-y-1">
+        <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Redeem Options</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white font-heading">Available Reward Vouchers</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="ticket" class="w-6 h-6 text-emerald-600"></i>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">₹50 Grocery Coupon</h3>
+          <p class="text-xs text-slate-500">Costs 500 Points • Valid on any order</p>
+          <button onclick="showToast('Voucher redeemed! Code added to wallet.', 'success')"
+            class="w-full py-2 bg-emerald-600 text-white font-bold text-xs rounded-xl">Redeem 500 Pts</button>
+        </div>
+
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="truck" class="w-6 h-6 text-blue-600"></i>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">Free Express Delivery Pass</h3>
+          <p class="text-xs text-slate-500">Costs 300 Points • Valid for 1 month</p>
+          <button onclick="showToast('Free Delivery Pass activated!', 'success')"
+            class="w-full py-2 bg-emerald-600 text-white font-bold text-xs rounded-xl">Redeem 300 Pts</button>
+        </div>
+
+        <div
+          class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+          <i data-lucide="gift" class="w-6 h-6 text-amber-500"></i>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">₹100 Supermarket Store Credit</h3>
+          <p class="text-xs text-slate-500">Costs 1,000 Points • Instant wallet cash</p>
+          <button onclick="showToast('₹100 credit added to wallet!', 'success')"
+            class="w-full py-2 bg-emerald-600 text-white font-bold text-xs rounded-xl">Redeem 1,000 Pts</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. POINTS HISTORY SAMPLE -->
+    <section class="max-w-4xl mx-auto px-4">
+      <div
+        class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm space-y-4">
+        <h3 class="font-bold text-base text-slate-900 dark:text-white font-heading">Recent Points Activity</h3>
+        <div class="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
+          <div class="py-2.5 flex justify-between"><span>Grocery Order #FB-10248</span><span
+              class="font-bold text-emerald-600">+120 Pts</span></div>
+          <div class="py-2.5 flex justify-between"><span>Weekly Survey Bonus</span><span
+              class="font-bold text-emerald-600">+50 Pts</span></div>
+          <div class="py-2.5 flex justify-between"><span>Redeemed ₹50 Voucher</span><span
+              class="font-bold text-rose-500">-500 Pts</span></div>
+          <div class="py-2.5 flex justify-between"><span>Welcome Bonus</span><span
+              class="font-bold text-emerald-600">+500 Pts</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-10 space-y-1">
+        <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Rewards Guide</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white font-heading">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <details
+          class="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 font-semibold">
+          <summary class="cursor-pointer flex justify-between items-center font-bold text-sm">Do FreshBasket loyalty
+            points expire? <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="mt-2 text-slate-500 font-normal">Points remain active for 12 months from the date they are earned.
+          </p>
+        </details>
+        <details
+          class="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 font-semibold">
+          <summary class="cursor-pointer flex justify-between items-center font-bold text-sm">How do I earn points in
+            physical stores? <i data-lucide="chevron-down"
+              class="w-4 h-4 group-open:rotate-180 transition-transform"></i></summary>
+          <p class="mt-2 text-slate-500 font-normal">Simply show your digital card barcode or provide your registered
+            phone number at the cashier checkout counter.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 8. FINAL CTA -->
+    <section class="max-w-7xl mx-auto px-4 text-center py-8">
+      <div
+        class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-10 sm:p-16 border border-emerald-800 shadow-2xl space-y-6">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Start Earning Rewards Today</h2>
+        <p class="text-slate-300 text-sm max-w-xl mx-auto leading-relaxed">Open your free account and claim 500 instant
+          welcome points.</p>
+        <div class="pt-2">
+          <a href="register.html"
+            class="px-8 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold rounded-xl shadow-xl transition-transform hover:-translate-y-0.5 inline-flex items-center gap-2 text-sm">
+            <i data-lucide="crown" class="w-5 h-5"></i> Join FreshBasket Rewards Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-xs mt-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div class="lg:col-span-2 space-y-4">
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-lg font-bold">
+            <i data-lucide="shopping-basket" class="w-5 h-5"></i>
+          </div>
+          <span class="text-xl font-extrabold text-white font-heading">Fresh<span
+              class="text-emerald-500">Basket</span></span>
+        </a>
+        <p class="text-xs text-slate-400 max-w-sm">Your neighborhood supermarket, now at your fingertips. Supplying
+          farm-fresh organic produce, daily dairy, bakery items and pantry staples.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-3 text-sm">Shop Departments</h4>
+        <ul class="space-y-2">
+          <li><a href="shop.html" class="hover:text-emerald-400">Shop All Products</a></li>
+          <li><a href="categories.html" class="hover:text-emerald-400">Fresh Produce</a></li>
+          <li><a href="offers.html" class="hover:text-emerald-400">Weekly Deals</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-3 text-sm">Customer Care</h4>
+        <ul class="space-y-2">
+          <li><a href="about.html" class="hover:text-emerald-400">About FreshBasket</a></li>
+          <li><a href="contact.html" class="hover:text-emerald-400">Contact Us</a></li>
+          <li><a href="delivery-coverage.html" class="hover:text-emerald-400">Delivery Coverage</a></li>
+          <li><a href="loyalty.html" class="hover:text-emerald-400">Loyalty Rewards</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-white font-bold text-sm">Get Fresh Deals</h4>
+        <p class="text-xs text-slate-400">Sign up for weekly offers and exclusive rewards.</p>
+        <form onsubmit="event.preventDefault(); showToast('Subscribed to deal alerts!', 'success')" class="space-y-2">
+          <input type="email" required placeholder="Enter email address..."
+            class="w-full px-3.5 py-2 text-xs bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-emerald-500">
+          <button type="submit"
+            class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition-colors">Subscribe
+            Now</button>
+        </form>
+      </div>
+    </div>
+    <div
+      class="border-t border-slate-800 py-6 px-4 max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4 text-[11px] text-slate-500">
+      <p>© 2026 FreshBasket Supermarket Template. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/shop.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/wishlist.js"></script>
+  <script src="../assets/js/shopping-list.js"></script>
+
+  <!-- MOBILE MENU DRAWER -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-slate-950/60 z-40 hidden backdrop-blur-sm"></div>
+  <div id="mobile-menu-drawer"
+    class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-y-auto">
+    <div class="p-5 space-y-4">
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-200 dark:border-slate-800">
+        <a href="../index.html" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
+            <i data-lucide="shopping-basket" class="w-4 h-4"></i>
+          </div>
+          <span class="font-extrabold text-base text-slate-900 dark:text-white font-heading">Fresh<span
+              class="text-emerald-600">Basket</span></span>
+        </a>
+        <button id="mobile-menu-close"
+          class="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none"
+          aria-label="Close Mobile Menu">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <nav class="space-y-1 text-sm font-semibold">
+        <div class="mobile-home-accordion">
+          <button
+            class="mobile-home-submenu-toggle flex items-center justify-between w-full px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            aria-expanded="false">
+            <div class="flex items-center gap-3">
+              <i data-lucide="house" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+              <span class="">Home</span>
+            </div>
+            <i data-lucide="chevron-down"
+              class="mobile-home-chevron w-4 h-4 transition-transform duration-200 text-slate-400"></i>
+          </button>
+          <div class="mobile-home-submenu hidden pl-9 space-y-1 mt-1">
+            <a href="../index.html"
+              class="mobile-nav-link flex items-center gap-2 py-2 px-3 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <i data-lucide="house" class="w-3.5 h-3.5"></i> Home 1
+            </a>
+            <a href="home-2.html"
+              class="mobile-nav-link flex items-center gap-2 py-2 px-3 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <i data-lucide="house" class="w-3.5 h-3.5"></i> Home 2
+            </a>
+          </div>
+        </div>
+        <a href="shop.html"
+          class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Shop</span>
+        </a>
+        <a href="categories.html"
+          class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="grid-2x2" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Categories</span>
+        </a>
+        <a href="offers.html"
+          class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="tag" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Offers</span>
+        </a>
+        <a href="delivery-coverage.html"
+          class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="truck" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Delivery</span>
+        </a>
+        <a href="loyalty.html"
+          class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-emerald-600 dark:text-emerald-400 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="award" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Loyalty</span>
+        </a>
+        <a href="about.html"
+          class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="info" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>About</span>
+        </a>
+        <a href="contact.html"
+          class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="phone" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Contact</span>
+        </a>
+        <a href="dashboard/index.html"
+          class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="layout-dashboard" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Dashboard</span>
+        </a>
+      </nav>
+    </div>
+    <div class="p-5 border-t border-slate-200 dark:border-slate-800 space-y-3 bg-slate-50/50 dark:bg-slate-900/50">
+      <div class="grid grid-cols-2 gap-2">
+        <button
+          class="theme-toggle-btn flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 text-xs font-semibold transition-colors"
+          type="button" aria-label="Toggle Theme">
+          <span class="theme-label-text">Theme</span>
+          <span class="theme-icon-container flex items-center justify-center"><i data-lucide="moon"
+              class="w-4 h-4"></i></span>
+        </button>
+        <button
+          class="rtl-toggle-btn flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 text-xs font-semibold transition-colors"
+          type="button" aria-label="Toggle RTL">
+          <span class="rtl-label-text">RTL</span>
+          <i data-lucide="languages" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-2 gap-2 pt-1">
+        <a href="login.html"
+          class="mobile-nav-link flex items-center justify-center gap-1.5 py-2.5 px-3 border border-emerald-600 text-emerald-600 dark:text-emerald-400 font-bold text-xs rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-950/50 transition-colors">
+          <i data-lucide="log-in" class="w-4 h-4"></i>
+          <span>Login</span>
+        </a>
+        <a href="register.html"
+          class="mobile-nav-link flex items-center justify-center gap-1.5 py-2.5 px-3 bg-emerald-600 text-white font-bold text-xs rounded-xl hover:bg-emerald-700 transition-colors shadow-sm">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Sign Up</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

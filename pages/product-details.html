@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh Organic Bananas (Yelakki) — Product Details | FreshBasket</title>
+  <meta name="description" content="Buy Farm-fresh organic Yelakki bananas online at FreshBasket Supermarket. Rich in potassium, vitamins, and antioxidants with express 30-minute delivery.">
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/images/favicon-192.png">
+
+  <!-- Tailwind CSS & Lucide CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f0fdf4', 100: '#dcfce7', 500: '#22c55e', 600: '#16a34a', 700: '#15803d' }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Design Tokens & Dark Mode / RTL CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col">
+
+  <header class="header-sticky bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 h-[68px] flex items-center justify-between gap-4">
+      <!-- Left: Logo -->
+      <a href="../index.html" class="flex items-center gap-2.5 group shrink-0" aria-label="FreshBasket Supermarket Homepage">
+        <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform">
+          <i data-lucide="shopping-basket" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white font-heading">Fresh<span class="text-emerald-600">Basket</span></span>
+          <span class="block text-[10px] text-slate-400 tracking-widest font-semibold uppercase">Daily Grocery Supermarket</span>
+        </div>
+      </a>
+      <!-- Center: Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-3 lg:gap-3.5 xl:gap-5 2xl:gap-6 text-xs lg:text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-300" id="desktop-nav">
+        <div class="relative group" id="home-dropdown-wrapper">
+          <button class="flex items-center gap-1 py-2 text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 focus:outline-none transition-colors" aria-haspopup="true" aria-expanded="false" id="home-dropdown-btn">
+            <span>Home</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-slate-400 group-hover:text-emerald-600"></i>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden py-1" role="menu">
+            <a href="../index.html" class="flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 hover:text-emerald-600 transition-colors" role="menuitem">
+              <i data-lucide="house" class="w-4 h-4 text-emerald-600"></i> Home 1
+            </a>
+            <a href="home-2.html" class="flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 hover:text-emerald-600 transition-colors" role="menuitem">
+              <i data-lucide="house" class="w-4 h-4 text-slate-400"></i> Home 2
+            </a>
+          </div>
+        </div>
+        <a href="shop.html" class="py-2 text-emerald-600 dark:text-emerald-400 font-bold">Shop</a>
+        <a href="categories.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Categories</a>
+        <a href="offers.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Offers</a>
+        <a href="delivery-coverage.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Delivery</a>
+        <a href="loyalty.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Loyalty</a>
+        <a href="about.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">About</a>
+        <a href="contact.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Contact</a>
+        <a href="dashboard/index.html" class="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Dashboard</a>
+      </nav>
+      <!-- Right: Action Controls -->
+      <div class="hidden lg:flex items-center gap-2 xl:gap-3">
+        <button id="themeToggle" type="button" class="theme-toggle-btn flex items-center justify-center w-9 h-9 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <i data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+        <button id="rtlToggle" class="rtl-toggle-btn flex items-center gap-1.5 h-9 px-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" type="button" aria-label="Toggle RTL layout" title="Toggle RTL layout">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 4 4-4 4"/><path d="M9 12H3"/><path d="M19 8l-4 4 4 4"/><path d="M15 12h6"/></svg>
+          <span>RTL</span>
+        </button>
+        <a href="cart.html" class="relative flex items-center justify-center w-9 h-9 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Shopping cart" title="Shopping cart">
+          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          <span class="cart-badge-count absolute -top-0.5 -right-0.5 min-w-[16px] h-4 text-[10px] font-bold bg-emerald-600 text-white rounded-full flex items-center justify-center px-0.5 leading-none" style="display:none"></span>
+        </a>
+        <span class="h-4 w-px bg-slate-200 dark:bg-slate-700" aria-hidden="true"></span>
+        <a href="login.html" class="px-3.5 py-1.5 border border-emerald-600 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-600 hover:text-white dark:hover:text-white rounded-full font-bold text-xs transition-colors flex items-center justify-center" aria-label="Login">Login</a>
+        <a href="register.html" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold text-xs shadow-sm transition-colors flex items-center justify-center" aria-label="Sign Up">Sign Up</a>
+      </div>
+      <!-- Mobile: Cart + Hamburger -->
+      <div class="lg:hidden flex items-center gap-1">
+        <a href="cart.html" class="relative flex items-center justify-center w-9 h-9 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Shopping cart">
+          <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+          <span class="cart-badge-count absolute -top-0.5 -right-0.5 min-w-[16px] h-4 text-[10px] font-bold bg-emerald-600 text-white rounded-full flex items-center justify-center px-0.5 leading-none" style="display:none"></span>
+        </a>
+        <button id="mobile-menu-toggle" class="flex items-center justify-center w-9 h-9 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none" aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 py-3 px-4 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex items-center gap-2">
+      <a href="../index.html" class="hover:text-emerald-600">Home</a>
+      <i data-lucide="chevron-right" class="w-3 h-3"></i>
+      <a href="shop.html" class="hover:text-emerald-600">Fruits & Vegetables</a>
+      <i data-lucide="chevron-right" class="w-3 h-3"></i>
+      <span class="text-slate-900 dark:text-white font-semibold">Fresh Organic Bananas (Yelakki)</span>
+    </div>
+  </div>
+
+  <!-- MAIN PRODUCT VIEW -->
+  <section class="bg-slate-900 text-white py-8 border-b border-slate-800" style="background-image: linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), url('../assets/images/fruits-vegetables-category.webp'); background-size: cover; background-position: center;">
+      <div class="max-w-7xl mx-auto px-4">
+        <nav class="text-xs text-slate-400 flex items-center gap-1.5" aria-label="Breadcrumb">
+          <a href="../index.html" class="hover:text-emerald-400 flex items-center gap-1"><i data-lucide="house" class="w-3.5 h-3.5"></i> Home</a>
+          <i data-lucide="chevron-right" class="w-3 h-3 text-slate-600"></i>
+          <a href="shop.html" class="hover:text-emerald-400">Shop</a>
+          <i data-lucide="chevron-right" class="w-3 h-3 text-slate-600"></i>
+          <span class="text-emerald-400 font-semibold">Product Detail</span>
+        </nav>
+      </div>
+    </section>
+<main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-12">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+      
+      <!-- Gallery Column -->
+      <div class="space-y-4">
+        <div class="w-full aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden flex items-center justify-center p-4 relative">
+          <img id="main-product-img" src="../assets/images/organic-yelakki-bananas.webp" alt="Fresh Organic Bananas" class="max-h-full max-w-full object-contain" width="400" height="400" fetchpriority="high">
+          <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">-25% OFF</span>
+        </div>
+        <div class="grid grid-cols-4 gap-3">
+          <img src="../assets/images/organic-yelakki-bananas.webp" alt="Banana thumb 1" class="w-full aspect-square rounded-lg border-2 border-emerald-600 cursor-pointer object-cover p-1" width="400" height="400" loading="lazy">
+          <img src="../assets/images/bananas-thumbnail.webp" alt="Banana thumb 2" class="w-full aspect-square rounded-lg border border-slate-200 dark:border-slate-700 opacity-60 hover:opacity-100 cursor-pointer object-cover p-1" width="120" height="120" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Info & Actions Column -->
+      <div class="space-y-6">
+        <div>
+          <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Fruits & Vegetables • Certified Organic</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading mt-1">Fresh Organic Bananas (Yelakki)</h1>
+          <div class="flex items-center gap-3 mt-2 text-xs">
+            <div class="flex items-center gap-1 text-amber-400">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <span class="font-bold text-slate-900 dark:text-slate-100 text-sm">4.8</span>
+            </div>
+            <span class="text-slate-400">•</span>
+            <span class="text-slate-500 dark:text-slate-400">142 Customer Reviews</span>
+            <span class="text-slate-400">•</span>
+            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold rounded">In Stock</span>
+          </div>
+        </div>
+
+        <div class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-baseline gap-4">
+          <span class="text-3xl font-extrabold text-slate-900 dark:text-white">₹49</span>
+          <span class="text-base text-slate-400 line-through">₹65</span>
+          <span class="text-xs font-bold text-emerald-600 bg-emerald-100 dark:bg-emerald-950 px-2 py-1 rounded">You Save ₹16 (25%)</span>
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase">Select Net Weight / Unit</label>
+          <div class="flex flex-wrap gap-2">
+            <button class="px-4 py-2 border-2 border-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 font-bold text-xs rounded-lg">1 kg Pack (approx 12-14 pcs)</button>
+            <button class="px-4 py-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs rounded-lg hover:border-slate-400">500g Pack</button>
+          </div>
+        </div>
+
+        <!-- Quantity & Add to Cart -->
+        <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+          <div class="quantity-control">
+            <button id="pd-qty-minus" aria-label="Decrease Quantity"><i data-lucide="minus" class="w-3 h-3"></i></button>
+            <input type="text" id="pd-qty-input" value="1" readonly aria-label="Quantity">
+            <button id="pd-qty-plus" aria-label="Increase Quantity"><i data-lucide="plus" class="w-4 h-4"></i></button>
+          </div>
+
+          <button id="pd-add-to-cart-btn" class="flex-1 min-w-[200px] py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+            <i data-lucide="shopping-basket" class="w-5 h-5"></i> Add to Basket
+          </button>
+
+          <button onclick="addToShoppingList({name:'Fresh Organic Bananas', price:49, unit:'1 kg'})" class="p-3.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded-xl" title="Save to Weekly List" aria-label="Add to Weekly Shopping List">
+            <i data-lucide="list-checks" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="space-y-2 pt-4 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800">
+          <div class="flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4"></i> Express 30-Min Delivery available for <strong>641001</strong></div>
+          <div class="flex items-center gap-2"><i data-lucide="rotate-ccw" class="w-4 h-4 text-emerald-600"></i> Easy 24-hour return policy for quality issues</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TABS SECTION -->
+    <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 md:p-8 space-y-6">
+      <div class="flex border-b border-slate-200 dark:border-slate-800 space-x-6 text-sm font-bold">
+        <button class="pb-3 border-b-2 border-emerald-600 text-emerald-600">Product Description</button>
+        <button class="pb-3 text-slate-500 hover:text-slate-800 dark:hover:text-slate-300">Nutritional Facts</button>
+        <button class="pb-3 text-slate-500 hover:text-slate-800 dark:hover:text-slate-300">Reviews (142)</button>
+      </div>
+
+      <div class="text-xs text-slate-600 dark:text-slate-300 space-y-4">
+        <p>Our Yelakki Bananas are sourced directly from certified organic farms in Karnataka. Known for their distinct fragrance, golden-yellow skin, and intense honey sweetness, these small bananas are loaded with energy, potassium, dietary fiber, and Vitamin B6.</p>
+        <h4 class="font-bold text-slate-900 dark:text-white">Storage Instructions:</h4>
+        <p>Store at room temperature away from direct sunlight. Do not refrigerate unpeeled bananas.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- UNIFIED RICH SUPERMARKET FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-xs mt-auto border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div class="lg:col-span-2 space-y-4">
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-lg font-bold">
+            <i data-lucide="shopping-basket" class="w-5 h-5"></i>
+          </div>
+          <span class="text-xl font-extrabold text-white font-heading">Fresh<span class="text-emerald-500">Basket</span></span>
+        </a>
+        <p class="text-xs text-slate-400 max-w-sm">
+          Your neighborhood supermarket, now at your fingertips. Supplying farm-fresh organic produce, daily dairy, bakery items and pantry staples.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-3 text-sm">Shop Departments</h4>
+        <ul class="space-y-2">
+          <li><a href="shop.html" class="hover:text-emerald-400">Shop All Products</a></li>
+          <li><a href="shop.html?category=fruits-vegetables" class="hover:text-emerald-400">Fruits & Vegetables</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-3 text-sm">Customer Service</h4>
+        <ul class="space-y-2">
+          <li><a href="contact.html" class="hover:text-emerald-400">Contact Us</a></li>
+          <li><a href="delivery-coverage.html" class="hover:text-emerald-400">Delivery Coverage</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-3 text-sm">Newsletter</h4>
+        <form onsubmit="event.preventDefault(); showToast('Subscribed!', 'success')" class="space-y-2">
+          <input type="email" required placeholder="Enter email address..." class="w-full px-3.5 py-2 text-xs bg-slate-800 border border-slate-700 rounded-lg text-white">
+          <button type="submit" class="w-full py-2 bg-emerald-600 text-white font-bold text-xs rounded-lg">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 py-6 px-4 max-w-7xl mx-auto flex flex-wrap justify-between text-[11px]">
+      <p>© 2026 FreshBasket Supermarket Template.</p>
+    </div>
+  </footer>
+
+  <!-- MOBILE MENU DRAWER -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-slate-950/60 z-40 hidden backdrop-blur-sm"></div>
+  <div id="mobile-menu-drawer" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-y-auto">
+    <div class="p-5 space-y-4">
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-200 dark:border-slate-800">
+        <a href="../index.html" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
+            <i data-lucide="shopping-basket" class="w-4 h-4"></i>
+          </div>
+          <span class="font-extrabold text-base text-slate-900 dark:text-white font-heading">Fresh<span class="text-emerald-600">Basket</span></span>
+        </a>
+        <button id="mobile-menu-close" class="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none" aria-label="Close Mobile Menu">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <nav class="space-y-1 text-sm font-semibold">
+        <div class="mobile-home-accordion">
+          <button class="mobile-home-submenu-toggle flex items-center justify-between w-full px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-expanded="false">
+            <div class="flex items-center gap-3">
+              <i data-lucide="house" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+              <span class="">Home</span>
+            </div>
+            <i data-lucide="chevron-down" class="mobile-home-chevron w-4 h-4 transition-transform duration-200 text-slate-400"></i>
+          </button>
+          <div class="mobile-home-submenu hidden pl-9 space-y-1 mt-1">
+            <a href="../index.html" class="mobile-nav-link flex items-center gap-2 py-2 px-3 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <i data-lucide="house" class="w-3.5 h-3.5"></i> Home 1
+            </a>
+            <a href="home-2.html" class="mobile-nav-link flex items-center gap-2 py-2 px-3 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <i data-lucide="house" class="w-3.5 h-3.5"></i> Home 2
+            </a>
+          </div>
+        </div>
+        <a href="shop.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-emerald-600 dark:text-emerald-400 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Shop</span>
+        </a>
+        <a href="categories.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="grid-2x2" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Categories</span>
+        </a>
+        <a href="offers.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="tag" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Offers</span>
+        </a>
+        <a href="delivery-coverage.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="truck" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Delivery</span>
+        </a>
+        <a href="loyalty.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="award" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Loyalty</span>
+        </a>
+        <a href="about.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="info" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>About</span>
+        </a>
+        <a href="contact.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="phone" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Contact</span>
+        </a>
+        <a href="dashboard/index.html" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="layout-dashboard" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Dashboard</span>
+        </a>
+      </nav>
+    </div>
+    <div class="p-5 border-t border-slate-200 dark:border-slate-800 space-y-3 bg-slate-50/50 dark:bg-slate-900/50">
+      <div class="grid grid-cols-2 gap-2">
+        <button class="theme-toggle-btn flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 text-xs font-semibold transition-colors" type="button" aria-label="Toggle Theme">
+          <span class="theme-label-text">Theme</span>
+          <span class="theme-icon-container flex items-center justify-center"><i data-lucide="moon" class="w-4 h-4"></i></span>
+        </button>
+        <button class="rtl-toggle-btn flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 text-xs font-semibold transition-colors" type="button" aria-label="Toggle RTL">
+          <span class="rtl-label-text">RTL</span>
+          <i data-lucide="languages" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-2 gap-2 pt-1">
+        <a href="login.html" class="mobile-nav-link flex items-center justify-center gap-1.5 py-2.5 px-3 border border-emerald-600 text-emerald-600 dark:text-emerald-400 font-bold text-xs rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-950/50 transition-colors">
+          <i data-lucide="log-in" class="w-4 h-4"></i>
+          <span>Login</span>
+        </a>
+        <a href="register.html" class="mobile-nav-link flex items-center justify-center gap-1.5 py-2.5 px-3 bg-emerald-600 text-white font-bold text-xs rounded-xl hover:bg-emerald-700 transition-colors shadow-sm">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Sign Up</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/shop.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/wishlist.js"></script>
+  <script src="../assets/js/shopping-list.js"></script>
+
+</body>
+</html>

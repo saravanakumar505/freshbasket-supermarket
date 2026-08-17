@@ -1,0 +1,6 @@
+# FreshBasket Supermarket Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap Link
+Sitemap: https://freshbasket.example.com/sitemap.xml
