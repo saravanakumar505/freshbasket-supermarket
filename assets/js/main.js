@@ -61,9 +61,9 @@ function applyTheme(theme) {
 
     const iconContainer = btn.querySelector('.theme-icon-container') || btn;
     if (isDark) {
-      iconContainer.innerHTML = '<i data-lucide="sun" class="w-5 h-5 text-amber-400 transition-transform duration-200 hover:rotate-45"></i>';
+      iconContainer.innerHTML = '<i data-lucide="sun" class="w-4 h-4 text-amber-400 transition-transform duration-200 hover:rotate-45"></i>';
     } else {
-      iconContainer.innerHTML = '<i data-lucide="moon" class="w-5 h-5 text-slate-700 dark:text-slate-300 transition-transform duration-200 hover:-rotate-12"></i>';
+      iconContainer.innerHTML = '<i data-lucide="moon" class="w-4 h-4 text-slate-700 dark:text-slate-300 transition-transform duration-200 hover:-rotate-12"></i>';
     }
 
     const label = btn.querySelector('.theme-label-text');

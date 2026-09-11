@@ -279,7 +279,7 @@ function createProductGridCard(product) {
   return `
     <div class="product-card" data-id="${product.id}">
       <div class="product-img-wrapper">
-        <img src="${product.image}" alt="${product.name}" loading="lazy">
+        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy">
         ${product.discount ? `<span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md">-${product.discount}%</span>` : ''}
         ${product.badge ? `<span class="absolute top-2 right-2 bg-amber-500 text-slate-900 text-xs font-bold px-2 py-1 rounded-md">${product.badge}</span>` : ''}
         <button class="wishlist-btn absolute bottom-2 right-2 w-9 h-9 bg-white/90 dark:bg-slate-800/90 rounded-full shadow flex items-center justify-center ${heartFill} hover:text-red-500 transition-colors" data-id="${product.id}" title="Add to Wishlist">
@@ -328,8 +328,8 @@ function createProductListRow(product) {
 
   return `
     <div class="product-card flex-row gap-4 p-4 items-center" data-id="${product.id}">
-      <div class="product-img-wrapper w-32 h-32 flex-shrink-0 mb-0">
-        <img src="${product.image}" alt="${product.name}" loading="lazy">
+      <div class="product-img-wrapper w-32 h-32 flex-shrink-0 mb-0 overflow-hidden">
+        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy">
         ${product.discount ? `<span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded">-${product.discount}%</span>` : ''}
       </div>
       <div class="flex-1 flex flex-col sm:flex-row justify-between gap-4">

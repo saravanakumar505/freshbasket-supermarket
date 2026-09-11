@@ -203,14 +203,22 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.75rem;
 }
 
-.product-card .product-img-wrapper img {
-  max-width: 85%;
-  max-height: 85%;
-  object-fit: contain;
+.product-card .product-img-wrapper img,
+#shop-product-container .product-img-wrapper img,
+.shop-container-image,
+.shop-container img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  display: block;
   transition: var(--transition-normal);
 }
 
-.product-card:hover .product-img-wrapper img {
+.product-card:hover .product-img-wrapper img,
+#shop-product-container .product-img-wrapper:hover img,
+.shop-container-image:hover {
   transform: scale(1.06);
 }
 
@@ -471,13 +479,15 @@ h1, h2, h3, h4, h5, h6 {
     flex-shrink: 0 !important;
   }
 
-  /* Theme control button */
+  /* Theme and RTL control buttons - Consistent circular shape */
   #themeToggle,
-  .theme-toggle-btn {
-    width: 2rem !important; /* 32px */
-    height: 2rem !important; /* 32px */
+  .theme-toggle-btn,
+  #rtlToggle,
+  .rtl-toggle-btn {
+    width: 2rem !important; /* 32px in compact mode */
+    height: 2rem !important; /* 32px in compact mode */
     padding: 0 !important;
-    border-radius: 0.5rem !important;
+    border-radius: 9999px !important; /* Circular */
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -487,34 +497,14 @@ h1, h2, h3, h4, h5, h6 {
   #themeToggle svg,
   #themeToggle i,
   .theme-toggle-btn svg,
-  .theme-toggle-btn i {
-    width: 1rem !important;
-    height: 1rem !important;
-  }
-
-  /* RTL control button */
-  #rtlToggle,
-  .rtl-toggle-btn {
-    height: 2rem !important; /* 32px */
-    padding-left: 0.5rem !important; /* 8px padding */
-    padding-right: 0.5rem !important;
-    gap: 0.25rem !important;
-    font-size: 11px !important;
-    border-radius: 0.5rem !important;
-    white-space: nowrap !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-  }
-
+  .theme-toggle-btn i,
   #rtlToggle svg,
   .rtl-toggle-btn svg {
-    width: 0.8125rem !important;
-    height: 0.8125rem !important;
+    width: 0.9375rem !important; /* 15px */
+    height: 0.9375rem !important;
   }
 
-  /* Cart link button */
+  /* Cart link button - Circular shape */
   header div.hidden.lg\:flex a[aria-label="Shopping cart"],
   header div.hidden.lg\:flex a[aria-label="Shopping Cart"],
   header div.hidden.lg\:flex a[href*="cart.html"] {
@@ -523,7 +513,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 0.5rem !important;
+    border-radius: 9999px !important;
     position: relative !important;
     flex-shrink: 0 !important;
   }
@@ -541,37 +531,46 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: auto !important;
   }
 
-  /* Login button */
-  header div.hidden.lg\:flex a[aria-label="Login"],
-  header div.hidden.lg\:flex a[href*="login.html"] {
-    padding-left: 0.625rem !important; /* 10px */
-    padding-right: 0.625rem !important;
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
-    font-size: 11.5px !important;
-    white-space: nowrap !important;
-    height: 2rem !important; /* 32px */
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Sign Up button */
+  /* Sign Up CTA button - Maintain same size */
   header div.hidden.lg\:flex a[aria-label="Sign Up"],
   header div.hidden.lg\:flex a[href*="register.html"] {
-    padding-left: 0.625rem !important; /* 10px */
-    padding-right: 0.625rem !important;
+    padding-left: 0.875rem !important; /* 14px */
+    padding-right: 0.875rem !important;
     padding-top: 0.25rem !important;
     padding-bottom: 0.25rem !important;
     font-size: 11.5px !important;
+    font-weight: 700 !important;
     white-space: nowrap !important;
     height: 2rem !important; /* 32px */
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    border-radius: 9999px !important;
     flex-shrink: 0 !important;
   }
+}
+
+/* ==========================================================================
+   GLOBAL THEME & RTL CIRCULAR CONTROLS & CTA CONSISTENCY
+   ========================================================================== */
+header #themeToggle,
+header .theme-toggle-btn.w-9,
+header #rtlToggle,
+header .rtl-toggle-btn.w-9 {
+  border-radius: 9999px !important;
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+header #themeToggle i,
+header #themeToggle svg,
+header #rtlToggle svg {
+  width: 1rem !important;
+  height: 1rem !important;
 }
 
 

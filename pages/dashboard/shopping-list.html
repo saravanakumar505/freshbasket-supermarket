@@ -34,10 +34,26 @@
         <input type="text" placeholder="Search orders, products, lists..." class="w-full pl-9 pr-4 py-2 text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full focus:outline-none focus:border-emerald-500">
       </div>
       <div class="flex items-center gap-3.5 ml-auto">
-        <button id="themeToggle" type="button" class="theme-toggle-btn flex items-center justify-center w-11 h-11 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <button id="themeToggle" type="button"
+          class="theme-toggle-btn flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+          aria-label="Switch to dark mode" title="Switch to dark mode">
           <i data-lucide="moon" class="w-5 h-5"></i>
         </button>
-        <button class="rtl-toggle-btn text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:text-emerald-600 transition-colors" aria-label="Toggle RTL">RTL</button>
+
+        <!-- RTL Toggle -->
+        <button id="rtlToggle"
+          class="rtl-toggle-btn flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+          type="button" aria-label="Toggle RTL layout" title="Toggle RTL layout">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m5 8 4 4-4 4" />
+            <path d="M9 12H3" />
+            <path d="M19 8l-4 4 4 4" />
+            <path d="M15 12h6" />
+          </svg>
+        </button>
+
+        <!-- Divider -->
         <span class="h-4 w-px bg-slate-200 dark:bg-slate-700" aria-hidden="true"></span>
         <div class="flex items-center gap-2">
           <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-white text-xs font-bold shrink-0">SK</div>
@@ -126,24 +142,95 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Lists Panel -->
         <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-bold text-sm text-slate-900 dark:text-white">My Lists</h3>
-            <button onclick="createList()" class="text-xs text-emerald-600 font-bold hover:underline flex items-center gap-1"><i data-lucide="plus" class="w-3.5 h-3.5"></i> New List</button>
+          <!-- View Tabs (Shopping List / My Lists) -->
+          <div class="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl mb-4" role="tablist" aria-label="Shopping list views">
+            <button id="tab-shopping-list" type="button" role="tab" aria-selected="true" onclick="setShoppingListView('shopping-list')" class="flex-1 py-2 px-3 text-xs font-bold rounded-lg transition-colors bg-emerald-600 text-white shadow-sm flex items-center justify-center gap-1.5">
+              <i data-lucide="list-checks" class="w-3.5 h-3.5"></i>
+              <span>Shopping List</span>
+            </button>
+            <button id="tab-my-lists" type="button" role="tab" aria-selected="false" onclick="setShoppingListView('my-lists')" class="flex-1 py-2 px-3 text-xs font-bold rounded-lg transition-colors text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-700/50 flex items-center justify-center gap-1.5">
+              <i data-lucide="folder" class="w-3.5 h-3.5"></i>
+              <span>My Lists</span>
+            </button>
           </div>
-          <div class="space-y-1.5" id="lists-nav">
-            
-            <button onclick="selectList('Weekly Groceries')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-colors bg-emerald-600 text-white">
-              <span>Weekly Groceries</span>
-              <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold">6</span>
-            </button>
-            <button onclick="selectList('Monthly Essentials')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-colors text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-              <span>Monthly Essentials</span>
-              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-0.5 rounded-full font-bold">4</span>
-            </button>
-            <button onclick="selectList('Party Supplies')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-colors text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-              <span>Party Supplies</span>
-              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-0.5 rounded-full font-bold">8</span>
-            </button>
+
+          <!-- Status / Heading row -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <h3 class="font-bold text-sm text-slate-900 dark:text-white" id="panel-view-title">Shopping List</h3>
+              <span id="panel-status-badge" class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 rounded-full text-[10px] font-bold">Active</span>
+            </div>
+            <button type="button" onclick="createList()" class="text-xs text-emerald-600 font-bold hover:underline flex items-center gap-1"><i data-lucide="plus" class="w-3.5 h-3.5"></i> New List</button>
+          </div>
+
+          <!-- Shopping List View Content -->
+          <div id="shopping-list-view-content" class="space-y-3">
+            <div class="space-y-1.5" id="lists-nav">
+              <button type="button" onclick="selectList('Weekly Groceries')" class="list-nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-colors bg-emerald-600 text-white" data-list="Weekly Groceries">
+                <span>Weekly Groceries</span>
+                <span class="badge-count text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold">6</span>
+              </button>
+              <button type="button" onclick="selectList('Monthly Essentials')" class="list-nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-colors text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" data-list="Monthly Essentials">
+                <span>Monthly Essentials</span>
+                <span class="badge-count text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-0.5 rounded-full font-bold">4</span>
+              </button>
+              <button type="button" onclick="selectList('Party Supplies')" class="list-nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-colors text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" data-list="Party Supplies">
+                <span>Party Supplies</span>
+                <span class="badge-count text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-0.5 rounded-full font-bold">8</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- My Lists View Content -->
+          <div id="my-lists-view-content" class="space-y-3 hidden">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-300">All Saved Lists</span>
+              <span class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full" id="my-lists-count">3 Lists</span>
+            </div>
+            <div class="space-y-2">
+              <div class="p-3 rounded-xl border border-emerald-500/40 bg-emerald-50/40 dark:bg-emerald-950/20 flex items-center justify-between">
+                <div>
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    Weekly Groceries
+                  </h4>
+                  <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">6 items • Active default list</p>
+                </div>
+                <button type="button" onclick="selectList('Weekly Groceries'); setShoppingListView('shopping-list');" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold transition-colors">
+                  Open
+                </button>
+              </div>
+              <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors flex items-center justify-between">
+                <div>
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <i data-lucide="folder" class="w-3.5 h-3.5 text-slate-400"></i>
+                    Monthly Essentials
+                  </h4>
+                  <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">4 items • Recurring monthly</p>
+                </div>
+                <button type="button" onclick="selectList('Monthly Essentials'); setShoppingListView('shopping-list');" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-[11px] font-bold transition-colors">
+                  Open
+                </button>
+              </div>
+              <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors flex items-center justify-between">
+                <div>
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <i data-lucide="folder" class="w-3.5 h-3.5 text-slate-400"></i>
+                    Party Supplies
+                  </h4>
+                  <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">8 items • Occasional list</p>
+                </div>
+                <button type="button" onclick="selectList('Party Supplies'); setShoppingListView('shopping-list');" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-[11px] font-bold transition-colors">
+                  Open
+                </button>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+              <span class="text-[11px] text-slate-500">Need another list?</span>
+              <button type="button" onclick="createList()" class="text-xs text-emerald-600 font-bold hover:underline flex items-center gap-1">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Create List
+              </button>
+            </div>
           </div>
         </div>
 
@@ -167,68 +254,68 @@
           <div class="space-y-2" id="shopping-items-list">
             
             <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 group">
-              <input type="checkbox"  class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
-              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white">Milk</span>
+              <input type="checkbox" onchange="toggleItemCheck(this)" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
+              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white item-title">Milk</span>
               <div class="flex items-center gap-1">
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">−</button>
+                <button type="button" onclick="changeItemQty(this, -1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Decrease quantity">−</button>
                 <span class="text-xs font-bold text-slate-900 dark:text-white w-6 text-center">2</span>
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">+</button>
+                <button type="button" onclick="changeItemQty(this, 1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Increase quantity">+</button>
               </div>
-              <button class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"><i data-lucide="x" class="w-3 h-3"></i></button>
+              <button type="button" onclick="removeItemRow(this)" class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors" aria-label="Remove item"><i data-lucide="x" class="w-3 h-3"></i></button>
             </div>
             <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 group">
-              <input type="checkbox"  class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
-              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white">Eggs</span>
+              <input type="checkbox" onchange="toggleItemCheck(this)" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
+              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white item-title">Eggs</span>
               <div class="flex items-center gap-1">
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">−</button>
+                <button type="button" onclick="changeItemQty(this, -1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Decrease quantity">−</button>
                 <span class="text-xs font-bold text-slate-900 dark:text-white w-6 text-center">12</span>
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">+</button>
+                <button type="button" onclick="changeItemQty(this, 1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Increase quantity">+</button>
               </div>
-              <button class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"><i data-lucide="x" class="w-3 h-3"></i></button>
+              <button type="button" onclick="removeItemRow(this)" class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors" aria-label="Remove item"><i data-lucide="x" class="w-3 h-3"></i></button>
             </div>
             <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 opacity-60 group">
-              <input type="checkbox" checked class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
-              <span class="flex-1 text-xs font-semibold line-through text-slate-400">Whole Wheat Bread</span>
+              <input type="checkbox" checked onchange="toggleItemCheck(this)" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
+              <span class="flex-1 text-xs font-semibold line-through text-slate-400 item-title">Whole Wheat Bread</span>
               <div class="flex items-center gap-1">
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">−</button>
+                <button type="button" onclick="changeItemQty(this, -1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Decrease quantity">−</button>
                 <span class="text-xs font-bold text-slate-900 dark:text-white w-6 text-center">1</span>
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">+</button>
+                <button type="button" onclick="changeItemQty(this, 1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Increase quantity">+</button>
               </div>
-              <button class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"><i data-lucide="x" class="w-3 h-3"></i></button>
+              <button type="button" onclick="removeItemRow(this)" class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors" aria-label="Remove item"><i data-lucide="x" class="w-3 h-3"></i></button>
             </div>
             <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 group">
-              <input type="checkbox"  class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
-              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white">Apples</span>
+              <input type="checkbox" onchange="toggleItemCheck(this)" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
+              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white item-title">Apples</span>
               <div class="flex items-center gap-1">
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">−</button>
+                <button type="button" onclick="changeItemQty(this, -1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Decrease quantity">−</button>
                 <span class="text-xs font-bold text-slate-900 dark:text-white w-6 text-center">6</span>
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">+</button>
+                <button type="button" onclick="changeItemQty(this, 1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Increase quantity">+</button>
               </div>
-              <button class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"><i data-lucide="x" class="w-3 h-3"></i></button>
+              <button type="button" onclick="removeItemRow(this)" class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors" aria-label="Remove item"><i data-lucide="x" class="w-3 h-3"></i></button>
             </div>
             <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 group">
-              <input type="checkbox"  class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
-              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white">Aged Basmati Rice</span>
+              <input type="checkbox" onchange="toggleItemCheck(this)" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
+              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white item-title">Aged Basmati Rice</span>
               <div class="flex items-center gap-1">
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">−</button>
+                <button type="button" onclick="changeItemQty(this, -1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Decrease quantity">−</button>
                 <span class="text-xs font-bold text-slate-900 dark:text-white w-6 text-center">1</span>
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">+</button>
+                <button type="button" onclick="changeItemQty(this, 1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Increase quantity">+</button>
               </div>
-              <button class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"><i data-lucide="x" class="w-3 h-3"></i></button>
+              <button type="button" onclick="removeItemRow(this)" class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors" aria-label="Remove item"><i data-lucide="x" class="w-3 h-3"></i></button>
             </div>
             <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 group">
-              <input type="checkbox"  class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
-              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white">Cold-Pressed Cooking Oil</span>
+              <input type="checkbox" onchange="toggleItemCheck(this)" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
+              <span class="flex-1 text-xs font-semibold text-slate-900 dark:text-white item-title">Cold-Pressed Cooking Oil</span>
               <div class="flex items-center gap-1">
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">−</button>
+                <button type="button" onclick="changeItemQty(this, -1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Decrease quantity">−</button>
                 <span class="text-xs font-bold text-slate-900 dark:text-white w-6 text-center">1</span>
-                <button class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold">+</button>
+                <button type="button" onclick="changeItemQty(this, 1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Increase quantity">+</button>
               </div>
-              <button class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"><i data-lucide="x" class="w-3 h-3"></i></button>
+              <button type="button" onclick="removeItemRow(this)" class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors" aria-label="Remove item"><i data-lucide="x" class="w-3 h-3"></i></button>
             </div>
           </div>
           <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
-            <span class="text-xs text-slate-500 font-semibold">5 items remaining</span>
+            <span id="items-remaining-count" class="text-xs text-slate-500 font-semibold">5 items remaining</span>
             <button onclick="addAllToCart()" class="flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-colors"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Add All to Cart</button>
           </div>
         </div>
@@ -255,12 +342,299 @@
   <script src="../../assets/js/main.js"></script>
   <script src="../../assets/js/cart.js"></script>
   <script>
-    function addAllToCart() { if(window.showToast) showToast('All items added to cart!', 'success'); }
-    function addItem() { const v = document.getElementById('new-item-input').value.trim(); if(v && window.showToast) { showToast(v + ' added to list!', 'success'); document.getElementById('new-item-input').value = ''; } }
-    function createList() { if(window.showToast) showToast('New list created!', 'success'); }
-    function renameList() { const n = prompt('New list name:'); if(n) document.getElementById('active-list-title').textContent = n; }
-    function deleteList() { if(confirm('Delete this list?') && window.showToast) showToast('List deleted.', 'success'); }
-    function selectList(n) { document.getElementById('active-list-title').textContent = n; }
+    let activeShoppingListView = 'shopping-list';
+
+    function setShoppingListView(view) {
+      activeShoppingListView = view;
+      const shoppingTab = document.getElementById('tab-shopping-list');
+      const myListsTab = document.getElementById('tab-my-lists');
+      const shoppingContent = document.getElementById('shopping-list-view-content');
+      const myListsContent = document.getElementById('my-lists-view-content');
+      const viewTitle = document.getElementById('panel-view-title');
+      const statusBadge = document.getElementById('panel-status-badge');
+
+      const activeClasses = ['bg-emerald-600', 'text-white', 'shadow-sm'];
+      const inactiveClasses = ['text-slate-600', 'dark:text-slate-300', 'hover:text-slate-900', 'dark:hover:text-white', 'hover:bg-slate-200/60', 'dark:hover:bg-slate-700/50'];
+
+      if (view === 'my-lists') {
+        if (shoppingTab) {
+          shoppingTab.setAttribute('aria-selected', 'false');
+          shoppingTab.classList.remove(...activeClasses);
+          shoppingTab.classList.add(...inactiveClasses);
+        }
+        if (myListsTab) {
+          myListsTab.setAttribute('aria-selected', 'true');
+          myListsTab.classList.remove(...inactiveClasses);
+          myListsTab.classList.add(...activeClasses);
+        }
+        if (shoppingContent) shoppingContent.classList.add('hidden');
+        if (myListsContent) myListsContent.classList.remove('hidden');
+        if (viewTitle) viewTitle.textContent = 'My Lists';
+        if (statusBadge) statusBadge.textContent = 'Active';
+      } else {
+        if (myListsTab) {
+          myListsTab.setAttribute('aria-selected', 'false');
+          myListsTab.classList.remove(...activeClasses);
+          myListsTab.classList.add(...inactiveClasses);
+        }
+        if (shoppingTab) {
+          shoppingTab.setAttribute('aria-selected', 'true');
+          shoppingTab.classList.remove(...inactiveClasses);
+          shoppingTab.classList.add(...activeClasses);
+        }
+        if (shoppingContent) shoppingContent.classList.remove('hidden');
+        if (myListsContent) myListsContent.classList.add('hidden');
+        if (viewTitle) viewTitle.textContent = 'Shopping List';
+        if (statusBadge) statusBadge.textContent = 'Active';
+      }
+
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }
+
+    const LISTS_ITEMS = {
+      'Weekly Groceries': [
+        { name: 'Milk', qty: 2, checked: false },
+        { name: 'Eggs', qty: 12, checked: false },
+        { name: 'Whole Wheat Bread', qty: 1, checked: true },
+        { name: 'Apples', qty: 6, checked: false },
+        { name: 'Aged Basmati Rice', qty: 1, checked: false },
+        { name: 'Cold-Pressed Cooking Oil', qty: 1, checked: false }
+      ],
+      'Monthly Essentials': [
+        { name: 'Basmati Rice 5kg', qty: 1, checked: false },
+        { name: 'Wheat Flour (Atta) 10kg', qty: 1, checked: false },
+        { name: 'Cooking Oil 5L Can', qty: 1, checked: false },
+        { name: 'Detergent Powder 3kg', qty: 1, checked: false }
+      ],
+      'Party Supplies': [
+        { name: 'Potato Chips Family Pack', qty: 4, checked: false },
+        { name: 'Sparkling Mineral Water', qty: 6, checked: false },
+        { name: 'Paper Cups & Plates Pack', qty: 2, checked: false },
+        { name: 'Assorted Fruit Juices', qty: 3, checked: false },
+        { name: 'Party Napkins 100s', qty: 2, checked: false },
+        { name: 'Mixed Roasted Nuts', qty: 2, checked: false },
+        { name: 'Cheese Dips & Crackers', qty: 3, checked: false },
+        { name: 'Cupcake Celebration Box', qty: 1, checked: false }
+      ]
+    };
+
+    let currentActiveList = 'Weekly Groceries';
+
+    function updateItemsCounts() {
+      const listContainer = document.getElementById('shopping-items-list');
+      if (!listContainer) return;
+      const rows = listContainer.querySelectorAll('.group');
+      const totalCount = rows.length;
+      let remainingCount = 0;
+      rows.forEach(r => {
+        const cb = r.querySelector('input[type="checkbox"]');
+        if (cb && !cb.checked) remainingCount++;
+      });
+
+      const remainingEl = document.getElementById('items-remaining-count');
+      if (remainingEl) {
+        remainingEl.textContent = `${remainingCount} ${remainingCount === 1 ? 'item' : 'items'} remaining`;
+      }
+
+      const currentNavBtn = document.querySelector(`.list-nav-btn[data-list="${currentActiveList}"]`);
+      if (currentNavBtn) {
+        const badge = currentNavBtn.querySelector('.badge-count');
+        if (badge) badge.textContent = totalCount;
+      }
+    }
+
+    function changeItemQty(btn, change) {
+      const container = btn.closest('.flex.items-center.gap-1') || btn.parentElement;
+      if (!container) return;
+      const qtySpan = container.querySelector('span');
+      if (!qtySpan) return;
+      let currentQty = parseInt(qtySpan.textContent.trim(), 10) || 1;
+      currentQty += change;
+
+      const row = btn.closest('.group');
+      const titleEl = row ? (row.querySelector('.item-title') || row.querySelector('.flex-1')) : null;
+      const itemName = titleEl ? titleEl.textContent.trim() : null;
+
+      if (currentQty <= 0) {
+        if (row) {
+          row.remove();
+          if (LISTS_ITEMS[currentActiveList] && itemName) {
+            LISTS_ITEMS[currentActiveList] = LISTS_ITEMS[currentActiveList].filter(i => i.name !== itemName);
+          }
+          updateItemsCounts();
+          if (window.showToast) showToast('Item removed from list', 'warning');
+        }
+        return;
+      }
+
+      qtySpan.textContent = currentQty;
+      if (LISTS_ITEMS[currentActiveList] && itemName) {
+        const item = LISTS_ITEMS[currentActiveList].find(i => i.name === itemName);
+        if (item) item.qty = currentQty;
+      }
+    }
+
+    function toggleItemCheck(checkbox) {
+      const row = checkbox.closest('.group');
+      if (!row) return;
+      const titleEl = row.querySelector('.item-title') || row.querySelector('.flex-1');
+      const itemName = titleEl ? titleEl.textContent.trim() : null;
+
+      if (checkbox.checked) {
+        row.classList.add('bg-slate-50', 'dark:bg-slate-800/50', 'opacity-60');
+        if (titleEl) {
+          titleEl.classList.add('line-through', 'text-slate-400');
+          titleEl.classList.remove('text-slate-900', 'dark:text-white');
+        }
+        if (LISTS_ITEMS[currentActiveList] && itemName) {
+          const item = LISTS_ITEMS[currentActiveList].find(i => i.name === itemName);
+          if (item) item.checked = true;
+        }
+      } else {
+        row.classList.remove('bg-slate-50', 'dark:bg-slate-800/50', 'opacity-60');
+        if (titleEl) {
+          titleEl.classList.remove('line-through', 'text-slate-400');
+          titleEl.classList.add('text-slate-900', 'dark:text-white');
+        }
+        if (LISTS_ITEMS[currentActiveList] && itemName) {
+          const item = LISTS_ITEMS[currentActiveList].find(i => i.name === itemName);
+          if (item) item.checked = false;
+        }
+      }
+      updateItemsCounts();
+    }
+
+    function removeItemRow(btn) {
+      const row = btn.closest('.group');
+      if (!row) return;
+      const titleEl = row.querySelector('.item-title') || row.querySelector('.flex-1');
+      const itemName = titleEl ? titleEl.textContent.trim() : null;
+      row.remove();
+      if (LISTS_ITEMS[currentActiveList] && itemName) {
+        LISTS_ITEMS[currentActiveList] = LISTS_ITEMS[currentActiveList].filter(i => i.name !== itemName);
+      }
+      updateItemsCounts();
+      if (window.showToast) showToast('Item removed from list', 'warning');
+    }
+
+    function renderCurrentListItems() {
+      const listContainer = document.getElementById('shopping-items-list');
+      if (!listContainer) return;
+      const items = LISTS_ITEMS[currentActiveList] || [];
+
+      if (items.length === 0) {
+        listContainer.innerHTML = '<div class="py-8 text-center text-slate-400 text-xs font-semibold">No items in this list yet. Type above to add one!</div>';
+        updateItemsCounts();
+        return;
+      }
+
+      listContainer.innerHTML = items.map(item => `
+        <div class="flex items-center gap-3 p-3 rounded-xl border ${item.checked ? 'border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 opacity-60' : 'border-slate-200 dark:border-slate-700'} group">
+          <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleItemCheck(this)" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer">
+          <span class="flex-1 text-xs font-semibold item-title ${item.checked ? 'line-through text-slate-400' : 'text-slate-900 dark:text-white'}">${item.name}</span>
+          <div class="flex items-center gap-1">
+            <button type="button" onclick="changeItemQty(this, -1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Decrease quantity">−</button>
+            <span class="text-xs font-bold text-slate-900 dark:text-white w-6 text-center">${item.qty}</span>
+            <button type="button" onclick="changeItemQty(this, 1)" class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-colors text-xs font-bold" aria-label="Increase quantity">+</button>
+          </div>
+          <button type="button" onclick="removeItemRow(this)" class="opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors" aria-label="Remove item"><i data-lucide="x" class="w-3 h-3"></i></button>
+        </div>
+      `).join('');
+
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+
+      updateItemsCounts();
+    }
+
+    function addAllToCart() {
+      const items = LISTS_ITEMS[currentActiveList] || [];
+      if (typeof addToCart === 'function') {
+        items.forEach(item => {
+          addToCart({ id: 'item-' + item.name.toLowerCase().replace(/\s+/g, '-'), name: item.name, price: 50 }, item.qty);
+        });
+      }
+      if (window.showToast) showToast('All items added to cart!', 'success');
+    }
+
+    function addItem() {
+      const input = document.getElementById('new-item-input');
+      if (!input) return;
+      const v = input.value.trim();
+      if (!v) return;
+
+      if (!LISTS_ITEMS[currentActiveList]) {
+        LISTS_ITEMS[currentActiveList] = [];
+      }
+      LISTS_ITEMS[currentActiveList].push({ name: v, qty: 1, checked: false });
+      renderCurrentListItems();
+      input.value = '';
+      if (window.showToast) showToast(v + ' added to list!', 'success');
+    }
+
+    function createList() {
+      const name = prompt('Enter new list name:');
+      if (!name || !name.trim()) return;
+      const trimmed = name.trim();
+      if (!LISTS_ITEMS[trimmed]) {
+        LISTS_ITEMS[trimmed] = [];
+      }
+      selectList(trimmed);
+      if (window.showToast) showToast(`List "${trimmed}" created!`, 'success');
+    }
+
+    function renameList() {
+      const n = prompt('New list name:', currentActiveList);
+      if (n && n.trim()) {
+        const old = currentActiveList;
+        currentActiveList = n.trim();
+        LISTS_ITEMS[currentActiveList] = LISTS_ITEMS[old] || [];
+        document.getElementById('active-list-title').textContent = currentActiveList;
+      }
+    }
+
+    function deleteList() {
+      if (confirm('Delete this list?') && window.showToast) {
+        delete LISTS_ITEMS[currentActiveList];
+        showToast('List deleted.', 'success');
+        selectList('Weekly Groceries');
+      }
+    }
+
+    function selectList(n) {
+      currentActiveList = n;
+      const activeTitle = document.getElementById('active-list-title');
+      if (activeTitle) activeTitle.textContent = n;
+      const buttons = document.querySelectorAll('.list-nav-btn');
+      buttons.forEach(btn => {
+        const isSelected = btn.getAttribute('data-list') === n;
+        const countBadge = btn.querySelector('.badge-count');
+        if (isSelected) {
+          btn.className = 'list-nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-colors bg-emerald-600 text-white';
+          if (countBadge) {
+            countBadge.className = 'badge-count text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold';
+          }
+        } else {
+          btn.className = 'list-nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-colors text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800';
+          if (countBadge) {
+            countBadge.className = 'badge-count text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-0.5 rounded-full font-bold';
+          }
+        }
+      });
+      renderCurrentListItems();
+    }
+
+    const newItemInput = document.getElementById('new-item-input');
+    newItemInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        addItem();
+      }
+    });
+
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarClose = document.getElementById('sidebar-close');
     const dashSidebar = document.getElementById('dashboard-sidebar');

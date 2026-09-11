@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
   <link rel="stylesheet" href="../../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../../assets/css/rtl.css">
 </head>
+
 <body class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
   <!-- DASHBOARD NAVBAR -->
   <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
@@ -27,27 +29,53 @@
         <div class="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-lg shadow-md">
           <i data-lucide="shopping-basket" class="w-5 h-5"></i>
         </div>
-        <span class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white font-heading hidden sm:block">Fresh<span class="text-emerald-600">Basket</span></span>
+        <span
+          class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white font-heading hidden sm:block">Fresh<span
+            class="text-emerald-600">Basket</span></span>
       </a>
       <div class="flex-1 relative max-w-md hidden md:block">
-        <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
-        <input type="text" placeholder="Search orders, products, lists..." class="w-full pl-9 pr-4 py-2 text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full focus:outline-none focus:border-emerald-500">
+        <i data-lucide="search"
+          class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
+        <input type="text" placeholder="Search orders, products, lists..."
+          class="w-full pl-9 pr-4 py-2 text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full focus:outline-none focus:border-emerald-500">
       </div>
       <div class="flex items-center gap-3.5 ml-auto">
-        <button id="themeToggle" type="button" class="theme-toggle-btn flex items-center justify-center w-11 h-11 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <button id="themeToggle" type="button"
+          class="theme-toggle-btn flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+          aria-label="Switch to dark mode" title="Switch to dark mode">
           <i data-lucide="moon" class="w-5 h-5"></i>
         </button>
-        <button class="rtl-toggle-btn text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:text-emerald-600 transition-colors" aria-label="Toggle RTL">RTL</button>
+
+        <!-- RTL Toggle -->
+        <button id="rtlToggle"
+          class="rtl-toggle-btn flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+          type="button" aria-label="Toggle RTL layout" title="Toggle RTL layout">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m5 8 4 4-4 4" />
+            <path d="M9 12H3" />
+            <path d="M19 8l-4 4 4 4" />
+            <path d="M15 12h6" />
+          </svg>
+        </button>
+
+        <!-- Divider -->
         <span class="h-4 w-px bg-slate-200 dark:bg-slate-700" aria-hidden="true"></span>
         <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-white text-xs font-bold shrink-0">SK</div>
+          <div
+            class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
+            SK</div>
           <div class="hidden sm:block">
             <p class="text-xs font-bold text-slate-900 dark:text-white leading-none">Saravana Kumar</p>
             <p class="text-[10px] text-amber-500 font-semibold">Gold Member</p>
           </div>
         </div>
-        <a href="../register.html" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold text-xs shadow-sm transition-colors flex items-center justify-center" aria-label="Sign Up">Sign Up</a>
-        <button id="sidebar-toggle" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-emerald-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors" aria-label="Open sidebar menu">
+        <a href="../register.html"
+          class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold text-xs shadow-sm transition-colors flex items-center justify-center"
+          aria-label="Sign Up">Sign Up</a>
+        <button id="sidebar-toggle"
+          class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-emerald-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
+          aria-label="Open sidebar menu">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
@@ -57,55 +85,87 @@
   <div id="sidebar-overlay" class="fixed inset-0 bg-slate-950/60 z-30 hidden lg:hidden" aria-hidden="true"></div>
   <div class="flex flex-1 overflow-hidden max-w-screen-xl mx-auto w-full">
     <!-- SIDEBAR -->
-    <aside id="dashboard-sidebar" class="fixed lg:static top-0 left-0 h-full lg:h-auto w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col shrink-0 overflow-y-auto">
+    <aside id="dashboard-sidebar"
+      class="fixed lg:static top-0 left-0 h-full lg:h-auto w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col shrink-0 overflow-y-auto">
       <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 lg:hidden">
         <span class="font-bold text-slate-900 dark:text-white text-sm">My Account</span>
-        <button id="sidebar-close" class="text-slate-500 hover:text-slate-800 dark:hover:text-white" aria-label="Close Sidebar"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button id="sidebar-close" class="text-slate-500 hover:text-slate-800 dark:hover:text-white"
+          aria-label="Close Sidebar"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
       <div class="p-4 border-b border-slate-200 dark:border-slate-800">
         <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shrink-0">SK</div>
+          <div
+            class="w-11 h-11 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
+            SK</div>
           <div>
             <p class="text-sm font-bold text-slate-900 dark:text-white">Saravana Kumar</p>
-            <p class="text-[10px] text-amber-500 font-semibold flex items-center gap-1"><i data-lucide="crown" class="w-3 h-3 text-amber-400"></i> Gold Member — 2,450 Pts</p>
+            <p class="text-[10px] text-amber-500 font-semibold flex items-center gap-1"><i data-lucide="crown"
+                class="w-3 h-3 text-amber-400"></i> Gold Member — 2,450 Pts</p>
           </div>
         </div>
       </div>
       <nav class="p-3 space-y-5 flex-1" aria-label="Dashboard navigation">
         <div>
-          <p class="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-3 mb-1">MAIN</p>
+          <p class="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-3 mb-1">
+            MAIN</p>
           <ul class="space-y-0.5 text-xs font-semibold">
-            <li><a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Overview</a></li>
-            <li><a href="active-order.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="package-check" class="w-4 h-4"></i> Active Order</a></li>
-            <li><a href="order-tracking.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="truck" class="w-4 h-4"></i> Order Tracking</a></li>
-            <li><a href="order-history.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="clock" class="w-4 h-4"></i> Order History</a></li>
+            <li><a href="index.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="layout-dashboard" class="w-4 h-4"></i> Overview</a></li>
+            <li><a href="active-order.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="package-check" class="w-4 h-4"></i> Active Order</a></li>
+            <li><a href="order-tracking.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="truck" class="w-4 h-4"></i> Order Tracking</a></li>
+            <li><a href="order-history.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="clock" class="w-4 h-4"></i> Order History</a></li>
           </ul>
         </div>
         <div>
-          <p class="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-3 mb-1">SHOPPING</p>
+          <p class="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-3 mb-1">
+            SHOPPING</p>
           <ul class="space-y-0.5 text-xs font-semibold">
-            <li><a href="shopping-list.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="list-checks" class="w-4 h-4"></i> Shopping List</a></li>
-            <li><a href="wishlist.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="heart" class="w-4 h-4 fill-emerald-500 text-emerald-500"></i> Wishlist</a></li>
-            <li><a href="addresses.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="map-pin" class="w-4 h-4"></i> Saved Addresses</a></li>
+            <li><a href="shopping-list.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="list-checks" class="w-4 h-4"></i> Shopping List</a></li>
+            <li><a href="wishlist.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="heart" class="w-4 h-4 fill-emerald-500 text-emerald-500"></i> Wishlist</a></li>
+            <li><a href="addresses.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="map-pin" class="w-4 h-4"></i> Saved Addresses</a></li>
           </ul>
         </div>
         <div>
-          <p class="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-3 mb-1">REWARDS</p>
+          <p class="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-3 mb-1">
+            REWARDS</p>
           <ul class="space-y-0.5 text-xs font-semibold">
-            <li><a href="loyalty.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="award" class="w-4 h-4"></i> Loyalty Rewards</a></li>
+            <li><a href="loyalty.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="award" class="w-4 h-4"></i> Loyalty Rewards</a></li>
           </ul>
         </div>
         <div>
-          <p class="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-3 mb-1">ACCOUNT</p>
+          <p class="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-600 px-3 mb-1">
+            ACCOUNT</p>
           <ul class="space-y-0.5 text-xs font-semibold">
-            <li><a href="profile.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-emerald-600 text-white"><i data-lucide="user" class="w-4 h-4"></i> Profile</a></li>
-            <li><a href="settings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="settings" class="w-4 h-4"></i> Settings</a></li>
-            <li><a href="logout.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40"><i data-lucide="log-out" class="w-4 h-4"></i> Logout</a></li>
+            <li><a href="profile.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-emerald-600 text-white"><i data-lucide="user"
+                  class="w-4 h-4"></i> Profile</a></li>
+            <li><a href="settings.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"><i
+                  data-lucide="settings" class="w-4 h-4"></i> Settings</a></li>
+            <li><a href="logout.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40"><i
+                  data-lucide="log-out" class="w-4 h-4"></i> Logout</a></li>
           </ul>
         </div>
       </nav>
       <div class="p-3 border-t border-slate-200 dark:border-slate-800">
-        <a href="../../index.html" class="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800">
+        <a href="../../index.html"
+          class="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800">
           <i data-lucide="store" class="w-4 h-4"></i> Back to Store
         </a>
       </div>
@@ -121,56 +181,73 @@
           <h1 class="text-xl font-extrabold font-heading text-slate-900 dark:text-white">My Profile</h1>
           <p class="text-xs text-slate-500 mt-0.5">Manage your personal information</p>
         </div>
-        
+
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Profile Card -->
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 text-center">
-          <div class="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white text-3xl font-extrabold mx-auto mb-4 relative">
+        <div
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 text-center">
+          <div
+            class="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white text-3xl font-extrabold mx-auto mb-4 relative">
             SK
-            <button class="absolute bottom-0 right-0 w-8 h-8 bg-white dark:bg-slate-900 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-slate-600 hover:text-emerald-600 shadow-sm" aria-label="Change photo"><i data-lucide="camera" class="w-4 h-4"></i></button>
+            <button
+              class="absolute bottom-0 right-0 w-8 h-8 bg-white dark:bg-slate-900 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-slate-600 hover:text-emerald-600 shadow-sm"
+              aria-label="Change photo"><i data-lucide="camera" class="w-4 h-4"></i></button>
           </div>
           <h2 class="text-base font-extrabold text-slate-900 dark:text-white">Saravana Kumar</h2>
           <p class="text-xs text-slate-500 mt-0.5">saravana.kumar@email.com</p>
           <div class="mt-4 flex items-center justify-center gap-2">
-            <span class="px-3 py-1 bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 text-[10px] font-bold rounded-full flex items-center gap-1"><i data-lucide="crown" class="w-3 h-3"></i> Gold Member</span>
+            <span
+              class="px-3 py-1 bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 text-[10px] font-bold rounded-full flex items-center gap-1"><i
+                data-lucide="crown" class="w-3 h-3"></i> Gold Member</span>
           </div>
           <div class="mt-5 space-y-2 text-xs">
-            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800"><span class="text-slate-500">Member Since</span><span class="font-bold">January 2024</span></div>
-            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800"><span class="text-slate-500">Total Orders</span><span class="font-bold">24 Orders</span></div>
-            <div class="flex justify-between py-2"><span class="text-slate-500">Loyalty Points</span><span class="font-bold text-amber-600">2,450 Pts</span></div>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800"><span
+                class="text-slate-500">Member Since</span><span class="font-bold">January 2024</span></div>
+            <div class="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800"><span
+                class="text-slate-500">Total Orders</span><span class="font-bold">24 Orders</span></div>
+            <div class="flex justify-between py-2"><span class="text-slate-500">Loyalty Points</span><span
+                class="font-bold text-amber-600">2,450 Pts</span></div>
           </div>
         </div>
 
         <!-- Edit Form -->
-        <div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+        <div
+          class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
           <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-6">Edit Personal Information</h3>
           <form onsubmit="saveProfile(event)" class="space-y-5">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Full Name</label>
-                <input type="text" value="Saravana Kumar" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
+                <input type="text" value="Saravana Kumar"
+                  class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Display Name</label>
-                <input type="text" value="Saran" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
+                <input type="text" value="Saran"
+                  class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
               </div>
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Email Address</label>
-              <input type="email" value="saravana.kumar@email.com" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
+              <input type="email" value="saravana.kumar@email.com"
+                class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Phone Number</label>
-              <input type="tel" value="+91 9876 543210" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
+              <input type="tel" value="+91 9876 543210"
+                class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Date of Birth</label>
-              <input type="date" value="1992-05-18" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold">
+              <input type="date" value="1992-05-18"
+                class="w-full px-3.5 py-2.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-emerald-500 font-semibold dark:[color-scheme:dark]">
             </div>
             <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
               <p class="text-[10px] text-slate-400">Last updated: Aug 10, 2026</p>
-              <button type="submit" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-2"><i data-lucide="save" class="w-4 h-4"></i> Save Changes</button>
+              <button type="submit"
+                class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-2"><i
+                  data-lucide="save" class="w-4 h-4"></i> Save Changes</button>
             </div>
           </form>
         </div>
@@ -178,10 +255,12 @@
     </main>
   </div>
   <!-- COMPACT FOOTER -->
-  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-4 px-4 text-xs text-slate-500 dark:text-slate-400">
+  <footer
+    class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-4 px-4 text-xs text-slate-500 dark:text-slate-400">
     <div class="max-w-screen-xl mx-auto flex flex-wrap justify-between items-center gap-3">
       <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded-lg bg-emerald-600 flex items-center justify-center"><i data-lucide="shopping-basket" class="w-3 h-3 text-white"></i></div>
+        <div class="w-6 h-6 rounded-lg bg-emerald-600 flex items-center justify-center"><i data-lucide="shopping-basket"
+            class="w-3 h-3 text-white"></i></div>
         <span class="font-bold text-slate-700 dark:text-slate-200">FreshBasket</span>
         <span class="hidden sm:inline">— Customer Portal</span>
       </div>
@@ -196,7 +275,7 @@
   </footer>
   <script src="../../assets/js/main.js"></script>
   <script>
-    function saveProfile(e) { e.preventDefault(); if(window.showToast) showToast('Profile updated successfully!', 'success'); }
+    function saveProfile(e) { e.preventDefault(); if (window.showToast) showToast('Profile updated successfully!', 'success'); }
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarClose = document.getElementById('sidebar-close');
     const dashSidebar = document.getElementById('dashboard-sidebar');
@@ -208,4 +287,5 @@
     sidebarOverlay?.addEventListener('click', closeSidebar);
   </script>
 </body>
+
 </html>
